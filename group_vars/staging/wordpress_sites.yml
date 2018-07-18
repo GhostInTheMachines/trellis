@@ -3,19 +3,20 @@
 # Define accompanying passwords/secrets in group_vars/staging/vault.yml
 
 wordpress_sites:
-  example.com:
+  islanderremoteservices.com:
     site_hosts:
-      - canonical: staging.example.com
-        # redirects:
-        #   - otherdomain.com
+      - canonical: islander-remote-services.com
+        redirects:
+        - www.islander-remote-services.com
     local_path: ../site # path targeting local Bedrock site directory (relative to Ansible root)
-    repo: git@github.com:example/example.com.git # replace with your Git repo URL
-    repo_subtree_path: site # relative path to your Bedrock/WP directory in your repo
-    branch: master
+    repo: git@github.com:ghostinthemachines/islanderremoteservices.com.git # replace with your Git repo URL
+    # repo_subtree_path: site # relative path to your Bedrock/WP directory in your repo
+    branch: stage
     multisite:
       enabled: false
     ssl:
-      enabled: false
+      enabled: true
       provider: letsencrypt
     cache:
-      enabled: false
+      enabled: true
+      duration: 30s
